@@ -13,6 +13,7 @@ def create_job(req:JobCreateRequest):
 
     try:
         container.create_item(body=entity)
+        print(f"Job created with ID: {entity['id']}")
     except CosmosHttpResponseError as e:
         raise HTTPException(status_code=500, detail=f"Cosmos error: {getattr(e, 'message', str(e))}")
     
